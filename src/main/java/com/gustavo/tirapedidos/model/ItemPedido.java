@@ -1,6 +1,7 @@
 package com.gustavo.tirapedidos.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "item_pedido")
@@ -11,6 +12,7 @@ public class ItemPedido {
     private Long id;
 
     // Muitos itens para um pedido
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id", nullable = false)
     private Pedido pedido;

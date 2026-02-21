@@ -23,6 +23,7 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens;
 
+    @Column(name = "valor_total")
     private Double valorTotal;
 
     public Pedido() {

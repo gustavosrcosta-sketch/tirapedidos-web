@@ -39,7 +39,7 @@ public class PedidoService {
             // Busca produto no banco
             Produto produto = produtoRepository
                     .findById(item.getProduto().getId())
-                    .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                    .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
 
             item.setProduto(produto);
             item.setPrecoUnitario(produto.getPreco());
