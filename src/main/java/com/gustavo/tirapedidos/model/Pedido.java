@@ -1,51 +1,50 @@
 package com.gustavo.tirapedidos.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
-@Table(name = "pedido")
 public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate data;
+    private Integer quantidade;
 
-    // Muitos pedidos para um cliente
-    @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
-
-    // Um pedido tem muitos itens
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<ItemPedido> itens;
-
-    @Column(name = "valor_total")
     private Double valorTotal;
 
-    public Pedido() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
-    public Pedido(LocalDate data, Cliente cliente, List<ItemPedido> itens, Double valorTotal) {
-        this.data = data;
-        this.cliente = cliente;
-        this.itens = itens;
-        this.valorTotal = valorTotal;
-    }
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
+
+    // Getters e Setters
 
     public Long getId() {
         return id;
     }
 
-    public LocalDate getData() {
-        return data;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public Cliente getCliente() {
@@ -56,19 +55,11 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public List<ItemPedido> getItens() {
-        return itens;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setItens(List<ItemPedido> itens) {
-        this.itens = itens;
-    }
-
-    public Double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }

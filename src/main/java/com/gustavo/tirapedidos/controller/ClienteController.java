@@ -9,13 +9,13 @@ import com.gustavo.tirapedidos.service.ClienteService;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
-
+   
     private final ClienteService service;
 
     public ClienteController(ClienteService service) {
         this.service = service;
     }
-
+    
     // POST - salvar cliente
     @PostMapping
     public Cliente salvar(@RequestBody Cliente cliente) {

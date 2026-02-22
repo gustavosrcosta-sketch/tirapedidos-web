@@ -2,6 +2,7 @@ package com.gustavo.tirapedidos.model;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "produto")
 public class Produto {
@@ -16,18 +17,14 @@ public class Produto {
     @Column(nullable = false)
     private Double preco;
 
-    @Column(nullable = false)
-    private Integer estoque;
-
     // Construtor vazio obrigatório para o JPA
     public Produto() {
     }
 
     // Construtor com parâmetros (opcional, mas profissional)
-    public Produto(String nome, Double preco, Integer estoque) {
+    public Produto(String nome, Double preco) {
         this.nome = nome;
         this.preco = preco;
-        this.estoque = estoque;
     }
 
     // Getters e Setters
@@ -52,11 +49,4 @@ public class Produto {
         this.preco = preco;
     }
 
-    public Integer getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Integer estoque) {
-        this.estoque = estoque;
-    }
 }
